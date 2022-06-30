@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map For	Deneyap_KizilOtesiAliciVerici
+#######################################
+
+#######################################
+# Library (KEYWORD1)
+#######################################
+Deneyap_KizilotesiAliciVerici	KEYWORD1
+
+####################################
+# Class (KEYWORD1)
+####################################
+Transceiver	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+isConnected	KEYWORD2
+getFwVersion	KEYWORD2
+setI2Caddress	KEYWORD2
+PinRead	KEYWORD2
+transceiverRead	KEYWORD2
+transceiverWrite	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
