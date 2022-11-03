@@ -7,9 +7,9 @@ Arduino library for Deneyap Infrarad Receiver Transmitter
 
 ## :mag_right:Specifications 
 - `Product ID` **M53**, **mpv1.0**
-- `MCU` STM8S003F3
+- `MCU` STM8S003F3, TSOP2238, IR12-21C/TR8
 - `Weight` 
-- `Module Dimension`
+- `Module Dimension` 25,4 mm x 25,4 mm
 - `I2C address` 0x22, 0x56, 0x26, 0x27
 
 | Address |  | 
@@ -20,7 +20,15 @@ Arduino library for Deneyap Infrarad Receiver Transmitter
 | 0x27 | address when ADR1 and ADR2 pads are shorted |
 
 ## :closed_book:Documentation
-Deneyap Infrarad Receiver Transmitter
+[Deneyap Infrarad Receiver Transmitter](https://docs.deneyapkart.org/en/content/contentDetail/deneyap-modul-deneyap-kzlotesi-alc-ve-verici-m53)
+
+[Deneyap Infrarad Receiver Transmitter Schematic](https://cdn.deneyapkart.org/media/upload/userFormUpload/RCUEAfKv1djiBgGqmZ3aGDLyIjuitj8l.pdf)
+
+[Deneyap Infrarad Receiver Transmitter Mechanical Drawing](https://cdn.deneyapkart.org/media/upload/userFormUpload/nkjtUEbPHdyuWbOrYQRJaQrbdgkd5l8Q.pdf)
+
+[Vishay TSOP2238-datasheet](https://www.vishay.com/docs/82459/tsop48.pdf)
+
+[Everlight IR12-21C/TR8-datasheet](https://eu.mouser.com/datasheet/2/143/EVER_S_A0007423485_1-2548612.pdf)
 
 [How to install a Arduino Library](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries)
 
@@ -35,8 +43,9 @@ This Arduino library allows you to use Deneyap Infrarad Receiver Transmitter wit
 - `library.properties ` General library properties for the Arduino package manager
 
 ## Version History
-1.0.0 - initial release
+1.0.1 - bug fix (doesn’t appear in Examples from Custom Library on Arduino 2.0.0)
 
+1.0.0 - initial release
 
 ## :rocket:Hardware Connections
 - Deneyap Infrarad Receiver Transmitter and Board can be connected with I2C cable
