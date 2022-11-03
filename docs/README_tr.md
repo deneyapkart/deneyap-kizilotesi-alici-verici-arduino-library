@@ -42,7 +42,7 @@ Bu Arduino kütüphanesi Deneyap Kızılötesi Alıcı&Verici'nin I2C çevre bir
 - `library.properties` Arduino yöneticisi için genel kütüphane özellikleri
 
 ## Sürüm Geçmişi
-1.0.1 - hata giderildi (Arduino 2.0'da kütüphane örneklerinin görünmemesi)
+1.0.1 - örnek uygulama dosyalarının isimleri değiştirildi (KizilOtesiAlici -> KizilotesiAlici, KizilOtesiVerici -> KizilotesiVerici )
 
 1.0.0 - ilk sürüm
 
