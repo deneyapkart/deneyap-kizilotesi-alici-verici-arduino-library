@@ -1,6 +1,5 @@
 /*
  *   Kızılötesi verici örneği,
- *
  *   Bu örnekte temel konfigürasyon ayarları yapılmaktadır.
  *   Kızılötesi alıcı butona basıldığında seçilen veriyi göndermektedir. 
  *
@@ -9,8 +8,7 @@
  *   Bu örnek Deneyap Kızılötesi Alıcı&Verici için oluşturulmuştur
  *      ------>  https://docs.deneyapkart.org/tr/content/contentDetail/deneyap-modul-deneyap-kzlotesi-alc-ve-verici-m53  <------
  *      ------>  https://github.com/deneyapkart/deneyap-kizilotesi-alici-verici-arduino-library  <------
- *
- */
+*/
 #include <Deneyap_KizilotesiAliciVerici.h>            // Deneyap Kızılötesi Alıcı&Verici kutuphanesi eklenmesi
 
 Transceiver IR;                                       // Transceiver için class tanımlaması

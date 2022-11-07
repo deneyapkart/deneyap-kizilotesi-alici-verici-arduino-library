@@ -1,9 +1,9 @@
 /*
 *****************************************************************************
-@file         Deneyap_KizilOtesiAliciVerici.h
+@file         Deneyap_KizilotesiAliciVerici.h
 @mainpage     Deneyap Infrarad Receiver Transmitter Arduino library header file
-@version      v1.0.0
-@date         June 29, 2022
+@version      v1.0.2
+@date         November 07, 2022
 @brief        This file contains all function prototypes and macros
               for Deneyap Infrarad Receiver Transmitter Arduino library
 *****************************************************************************
@@ -54,6 +54,9 @@ public:
     uint32_t transceiverRead();
     bool transceiverWrite(uint8_t data, uint8_t address = 0x44);
 
+    uint8_t i2cData2;
+    uint8_t i2cData1;
+
 private:
     TwoWire *_i2cPort;                          // Port selection (0 or 1)
     uint8_t _i2cAddress;                        // Device I2C address
@@ -63,6 +66,7 @@ private:
     uint8_t I2C_ReadData(Transceiver_DataPacket_TypeDef *dataPacket);
     uint8_t I2C_ReadData8bit(Transceiver_DataPacket_TypeDef *dataPacket);
     uint16_t I2C_ReadData16bit(Transceiver_DataPacket_TypeDef *dataPacket);
+    uint16_t I2C_ReadFirmwareData16bit(Transceiver_DataPacket_TypeDef *dataPacket);
     bool I2C_SendDataPacket(Transceiver_DataPacket_TypeDef *dataPacket);
 };
 

@@ -1,10 +1,10 @@
 /*
 *****************************************************************************
-@file         Deneyap_KizilOtesiAliciVerici.cpp
+@file         Deneyap_KizilotesiAliciVerici.cpp
 @mainpage     Deneyap Infrarad Receiver Transmitter Arduino library source file
 @maintainer   RFtek Electronics <techsupport@rftek.com.tr>
-@version      v1.0.0
-@date         June 29, 2022
+@version      v1.0.2
+@date         November 07, 2022
 @brief        Includes functions to controlDeneyap Infrarad Receiver Transmitter
               Arduino library
 
@@ -26,8 +26,12 @@ Library includes:
  */
 bool Transceiver::begin(uint8_t address, TwoWire &port) {
     Wire.begin();
+#if defined(ARDUINO_DYM)
+    Wire.setClock(100000);
+#else
     Wire.setClock(50000);
-    _i2cAddress = address;
+#endif
+    _i2cAddress  = address;
     _i2cPort = &port;
     _dataPacket = {0};
 
@@ -55,7 +59,7 @@ bool Transceiver::isConnected() {
 uint16_t Transceiver::getFwVersion() {
     _dataPacket.command = TRANSCEIVER_REQUEST_FW_VERSION;
     _dataPacket.dataSize = 0;
-    return I2C_ReadData16bit(&_dataPacket);
+    return I2C_ReadFirmwareData16bit(&_dataPacket);
 }
 
 /**
@@ -164,6 +168,11 @@ uint8_t Transceiver::I2C_ReadData(Transceiver_DataPacket_TypeDef *dataPacket) {
     return 1;
 }
 
+/**
+ * @brief  Reads 8bit data from I2C interface
+ * @param  dataPacket: includes protocol to request data
+ * @retval I2C 8bit data
+ */
 uint8_t Transceiver::I2C_ReadData8bit(Transceiver_DataPacket_TypeDef *dataPacket) {
     _i2cPort->beginTransmission(_i2cAddress);
     _i2cPort->write(dataPacket->command);
@@ -179,8 +188,7 @@ uint8_t Transceiver::I2C_ReadData8bit(Transceiver_DataPacket_TypeDef *dataPacket
  * @param  dataPacket: includes protocol to request data
  * @retval I2C 16bit data
  */
-uint16_t Transceiver::I2C_ReadData16bit(Transceiver_DataPacket_TypeDef *dataPacket)
-{
+uint16_t Transceiver::I2C_ReadData16bit(Transceiver_DataPacket_TypeDef *dataPacket) {
     _i2cPort->beginTransmission(_i2cAddress);
     _i2cPort->write(dataPacket->command);
     _i2cPort->endTransmission();
@@ -189,6 +197,24 @@ uint16_t Transceiver::I2C_ReadData16bit(Transceiver_DataPacket_TypeDef *dataPack
         uint16_t i2cData = _i2cPort->read();
         i2cData |= (_i2cPort->read() << 8);
         return i2cData;
+    }
+    return 0;
+}
+
+/**
+ * @brief  Reads 16bit data from I2C interface
+ * @param  dataPacket: includes protocol to request data
+ * @retval I2C 16bit data
+ */
+uint16_t Transceiver::I2C_ReadFirmwareData16bit(Transceiver_DataPacket_TypeDef *dataPacket) {
+    _i2cPort->beginTransmission(_i2cAddress);
+    _i2cPort->write(dataPacket->command);
+    _i2cPort->endTransmission();
+
+    if (_i2cPort->requestFrom(_i2cAddress, static_cast<uint8_t>(2)) != 0) {
+        i2cData2 = _i2cPort->read();
+        i2cData1 = _i2cPort->read();
+        Serial.print("v"); Serial.print(i2cData1); Serial.print("."); Serial.println(i2cData2);
     }
     return 0;
 }

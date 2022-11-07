@@ -43,6 +43,8 @@ This Arduino library allows you to use Deneyap Infrarad Receiver Transmitter wit
 - `library.properties ` General library properties for the Arduino package manager
 
 ## Version History
+1.0.2 - added new function(I2C_ReadFirmwareData16bit), updated function(getFwVersion) and comment lines
+
 1.0.1 - changed example file names (KizilOtesiAlici -> KizilotesiAlici, KizilOtesiVerici -> KizilotesiVerici )
 
 1.0.0 - initial release
