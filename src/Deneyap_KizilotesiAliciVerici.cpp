@@ -121,7 +121,7 @@ bool Transceiver::PinRead() {
  * @retval uint16_t : Analog pin value
  */
 bool Transceiver::transceiverWrite(uint8_t data, uint8_t address) {
-    uint8_t addressInverse;
+    //uint8_t addressInverse;
     uint8_t dataInverse;
 
     // addressInverse = address^(uint8_t)0xFF;
@@ -158,7 +158,7 @@ uint8_t Transceiver::I2C_ReadData(Transceiver_DataPacket_TypeDef *dataPacket) {
 
     _i2cPort->endTransmission();
 
-    if (_i2cPort->requestFrom(_i2cAddress, static_cast<uint8_t>(5)) != 0); { // while(_i2cPort->available())
+    if (_i2cPort->requestFrom(_i2cAddress, static_cast<uint8_t>(5)) != 0) { // while(_i2cPort->available())
         dataPacket->rxData1 = _i2cPort->read();
         dataPacket->rxData2 = _i2cPort->read();
         dataPacket->rxData3 = _i2cPort->read();
